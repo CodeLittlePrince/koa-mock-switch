@@ -1,4 +1,3 @@
-const chalk = require('chalk')
 const send = require('koa-send')
 const Koa = require('koa')
 const processMock = require('./utils/processMock')
@@ -62,15 +61,7 @@ class KoaMockSwitch {
         // 模拟
         let path = ctx.path.replace(this.apiSuffix, '')
         // 调用对应的模拟数据
-        let mockHandle
-        try {
-          mockHandle = require(`${this.mockRoot}${path}.js`)
-        } catch(e) {
-          // 没有对应的mock模块
-          console.log(chalk.redBright(`[error] the ${path}.js can't be found in ${this.mockRoot}`))
-          await next()
-          return
-        }
+        let mockHandle = require(`${this.mockRoot}${path}.js`)
         // 返回数据
         // 如果mock-switch设置过，则从cache中（即$config）获取即可
         if (this.$config.hasOwnProperty(path)) {

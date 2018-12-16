@@ -1,6 +1,6 @@
 {
   "name": "koa-mock-switch",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "easy way to swich mock status without changing source mock data",
   "main": "index.js",
   "scripts": {
@@ -21,17 +21,19 @@
   },
   "homepage": "https://github.com/CodeLittlePrince/koa-mock-switch#readme",
   "devDependencies": {
-    "boom": "^7.3.0",
-    "chalk": "^2.4.1",
     "html-webpack-plugin": "^3.2.0",
-    "koa": "^2.6.2",
-    "koa-bodyparser": "^4.2.1",
-    "koa-router": "^7.4.0",
-    "koa-send": "^5.0.0",
     "mockjs": "^1.0.1-beta3",
     "nodemon": "^1.18.9",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
+  },
+  "dependencies": {
+    "boom": "^7.3.0",
+    "chalk": "^2.4.1",
+    "koa": "^2.6.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "koa-send": "^5.0.0"
   }
 }
