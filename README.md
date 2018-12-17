@@ -42,6 +42,7 @@ Why
 如果状态更多呢？
 
 <img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-2.png" width="200" />
+<<<<<<< HEAD
 
 
 有同学说，我三年的注释解注释工作经验，怕这百把十个操作？我就喜欢每次改完代码就一顿注释解注释操作，让老板看到，我工作是有多么饱和。
