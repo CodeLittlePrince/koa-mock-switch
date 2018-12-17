@@ -37,16 +37,16 @@ Why
 如果状态多呢？比如一个用户信息接口，用户分为企业用户和个人用户，然后，企业用户有四种状态：未实名、实名中、已实名、实名失败。默认模拟数据为**企业用户->已实名**，这个时候，我们想要测测所有的情况，那就得做7次注释加解注释的操作。
 版本迭代了，已实名还有分：初级会员、中级会员、高级会员、超级会员。
 
-<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-1.jpg" width="200" />
+<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-1.jpg?raw=true" width="200" />
 
 如果状态更多呢？
 
-<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-2.png" width="200" />
+<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-2.png?raw=true" width="200" />
 
 
 有同学说，我三年的注释解注释工作经验，怕这百把十个操作？我就喜欢每次改完代码就一顿注释解注释操作，让老板看到，我工作是有多么饱和。
 
-<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-3.jpeg" width="200" />
+<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-3.jpeg?raw=true" width="200" />
 
 我相信有些很有毅力的同学，会觉得这都不是事儿。但是，这么做的话，我们能保证我们不会漏掉任何一个有多个状态的接口吗？
 又有同学说：恩，这个不难，在每个有多个状态的mock文件中加个标记，比如`javascript是世界上最好的语言`这行注释，然后全局搜索，就能知道哪些mock文件会有多状态了。
@@ -55,7 +55,7 @@ Why
 有同学说：小意思，写注释就好，想要多少写多少，下次一行行看注释就好了。
 恩~~~对于这样的杠精，我只能说：
 
-<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-5.jpg" width="200" />
+<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-5.jpg?raw=true" width="200" />
 
 为了解决这些问题，`koa-mock-switch`诞生了。
 
@@ -79,20 +79,20 @@ How
 mock管理界面browser -> node 算法：
 
 为了达到通过UI界面的操作就可以控制返回对应状态的mock数据的效果，会有一个和项目无关的，专门用来管理mock返回数据的页面，我们就叫做mock-management-page吧，如图：
-<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-6.png" width="100%" />
+<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-6.png?raw=true" width="100%" />
 这个页面的列表渲染，依赖与事先创建的mockSwitchMap。
 
-<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-9.png" width="300" />
+<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-9.png?raw=true" width="300" />
 
 渲染完以后，只要切换状态，就会想node服务发起ajax请求，参数为api的地址以及对应的status（如成功或失败）。node端接收到后，读取该api的mock文件，根据需要的状态，更新`$config`。
 
 如此一来，我们就可以通过mock-management-page，在开发的时候，简单的点击一下按钮，就达到了切换返回数据的目的。
 
-<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-12.gif" width="600" />
+<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-12.gif?raw=true" width="600" />
 
 然而，还是会遇到问题，从算法可以看出，mock-management-page可以发起ajax对应的status是单一的，会遇到什么问题呢？
 
-<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-7.png" width="400" />
+<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-7.png?raw=true" width="400" />
 
 缺点很明显：
 
@@ -100,7 +100,7 @@ mock管理界面browser -> node 算法：
 
 2、我们看到有段注释`// 'bankCardType': 'ENTERPRISE',`，我们依然用了传统的注释，解注释方式来切换返回数据。因为，我们之前说过**mock-management-page可以发起ajax对应的status是单一的**。如果我们一定要把它变为可切换方式，我们不得不这么写：
 
-<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-8.png" width="500" />
+<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-8.png?raw=true" width="500" />
 
 我们发现，处理状态的过程又多了，最终导致该接口状态越多，处理逻辑约繁重，想想都觉得好心疼，做了这么多，回报却不是很大。
 
@@ -112,17 +112,17 @@ Rule
 ---
 我们通过事先约定来规定mockSwitchMap的value，为了便于理解，我们回到Hello Kitty的例子，我们重新构造mockSwitchMap的value：
 
-<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-10.png" width="300" />
+<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-10.png?raw=true" width="300" />
 
 我们`[]`代表数据的层级，用`@`代表状态，`@`作为状态选项，经过处理以后，会向上提升一层。
 
 `/api/kitty`的mock数据文件：
 
-<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-11.png" width="300" />
+<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-11.png?raw=true" width="300" />
 
 如此，我们就可以非常灵活地管理我们想要返回的mock数据，并且，对于哪些mock接口具有多种状态一目了然。此外，如果不需要多状态的mock数据和传统mock文件一样，不需要做任何额外的处理，比如Tom的mock文件：
 
-<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-13.png" width="300" />
+<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-13.png?raw=true" width="300" />
 
 
 npm安装
