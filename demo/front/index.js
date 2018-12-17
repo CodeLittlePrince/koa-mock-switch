@@ -1,4 +1,4 @@
-document.addEventListener('click', () => {
+sendBtn.addEventListener('click', () => {
   fetch('/api/kitty.htm')
     .then(res => {
       return res.json()
