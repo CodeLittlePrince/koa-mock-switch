@@ -8,7 +8,7 @@
   <style>
     * { color: #333; }
     #response { font-size: 20px; }
-    #sendBtn { border: none;padding: 10px;color: #fff;background-color: #409eff;border-color: #409eff;border-radius: 4px;cursor: pointer;font-size: 16px;outline: none;}
+    button { border: none;padding: 10px;color: #fff;background-color: #409eff;border-color: #409eff;border-radius: 4px;cursor: pointer;font-size: 16px;outline: none;}
     #sendBtn:active { background: #3a8ee6;border-color: #3a8ee6;}
   </style>
 </head>
@@ -16,7 +16,8 @@
   <h1>Response Message</h1>
   <p id="response">{{ message }}</p>
   <div>
-    <button id="sendBtn">send request</button>
+    <button id="sendKittyBtn">send kitty</button>
+    <button id="sendTomBtn">send Tom</button>
   </div>
   <div>
     <a href="http://localhost:9898/mock-switch/" target="_blank">mock-switch-management-page</a>

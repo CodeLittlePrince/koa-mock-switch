@@ -42,7 +42,6 @@ Why
 如果状态更多呢？
 
 <img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-2.png" width="200" />
-<<<<<<< HEAD
 
 
 有同学说，我三年的注释解注释工作经验，怕这百把十个操作？我就喜欢每次改完代码就一顿注释解注释操作，让老板看到，我工作是有多么饱和。
@@ -93,7 +92,7 @@ mock管理界面browser -> node 算法：
 
 然而，还是会遇到问题，从算法可以看出，mock-management-page可以发起ajax对应的status是单一的，会遇到什么问题呢？
 
-<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-7.png" width="500" />
+<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-7.png" width="400" />
 
 缺点很明显：
 
@@ -121,7 +120,10 @@ Rule
 
 <img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-11.png" width="300" />
 
-如此，我们就可以非常灵活地管理我们想要返回的mock数据了。
+如此，我们就可以非常灵活地管理我们想要返回的mock数据，并且，对于哪些mock接口具有多种状态一目了然。此外，如果不需要多状态的mock数据和传统mock文件一样，不需要做任何额外的处理，比如Tom的mock文件：
+
+<img src="https://github.com/CodeLittlePrince/ImagesForGithub/blob/master/koa-mock-switch-13.png" width="300" />
+
 
 npm安装
 ---
