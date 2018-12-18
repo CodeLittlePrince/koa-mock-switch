@@ -1,7 +1,3 @@
-前言
----
-针对目前前端mock数据server的不足，本王继承在同事的思想之上，为米娜桑做了一个简单易用的基于koa的前端mock工具 —— [koa-mock-swich](https://www.npmjs.com/package/koa-mock-switch)。
-
 What
 ---
 这是一个前端mock数据、并可以管理返回数据的server。
