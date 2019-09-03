@@ -1,3 +1,4 @@
+const path = require('path')
 const send = require('koa-send')
 const Koa = require('koa')
 const processMock = require('./utils/processMock')
@@ -40,9 +41,14 @@ class KoaMockSwitch {
         )
       } else if (ctx.path.startsWith('/mock-switch')) {
         // '/mock-switch'是接口管理页面切换接口时候post的地址
-        const path = ctx.request.body.key
+        const mockPath = path.join(this.mockRoot, `${ctx.request.body.key}.js`)
+        if (!mockPath.startsWith(this.mockRoot)) {
+          throw new Error(`Security! path above the mockRoot is trying to be obtained, via: ${mockPath}`)
+        }
+
         const value = ctx.request.body.value
-        const mockHandle = require(`${this.mockRoot}${path}.js`)
+
+        const mockHandle = require(mockPath)
         // ====
         this.$config[path] = processMock(mockHandle(), value)
         // ====
@@ -59,9 +65,12 @@ class KoaMockSwitch {
       ctx.path.indexOf('hot-update.json') === -1
       ) {
         // 模拟
-        let path = ctx.path.replace(this.apiSuffix, '')
+        const mockPath = path.join(this.mockRoot, `${ctx.path.replace(this.apiSuffix, '')}.js`)
+        if (!mockPath.startsWith(this.mockRoot)) {
+          throw new Error(`Security! path above the mockRoot is trying to be obtained, via: ${mockPath}`)
+        }
         // 调用对应的模拟数据
-        let mockHandle = require(`${this.mockRoot}${path}.js`)
+        let mockHandle = require(mockPath)
         // 返回数据
         // 如果mock-switch设置过，则从cache中（即$config）获取即可
         if (this.$config.hasOwnProperty(path)) {
