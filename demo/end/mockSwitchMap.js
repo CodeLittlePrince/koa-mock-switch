@@ -6,7 +6,7 @@ module.exports = [
       {
         name: '成功',
         value: `[
-          result [@success [@hello]],
+          result [@success],
           @good
         ]`
       },
