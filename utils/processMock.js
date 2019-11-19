@@ -16,7 +16,16 @@ function processMock(mockData, value) {
     return
   }
   // 计算
-  return computeMock(value, mockData)
+  let resultData = computeMock(value, mockData)
+  // mockData最外层可能还是@类型字段，所以需要进一步处理
+  const keys = Object.keys(resultData)
+  const hasAtSignalPrefix = keys.some(key => {
+    return -1 < key.indexOf('@')
+  })
+  if (hasAtSignalPrefix) {
+    resultData = resultData[keys[0]]
+  }
+  return resultData
 }
 
 /**
@@ -41,14 +50,23 @@ function mergeData(pieces, data) {
   for (let i = 0, len = pieces.length; i < len; i++) {
     const p = pieces[i]
     let bracketIndex = p.indexOf('[')
-    if (bracketIndex > -1) {
+    if (-1 < bracketIndex) {
       const key = p.slice(0, bracketIndex)
       const childPieces = splitComma(p.slice(bracketIndex), data[key])
-      const mergeDataResult = mergeData(childPieces, data[key])
-      const subKey = Object.keys(mergeDataResult)[0]
-      rst[key] = subKey.indexOf('@') > -1 ? mergeDataResult[subKey] : mergeDataResult
+      let mergeDataResult = mergeData(childPieces, data[key])
+      const subKeys = Object.keys(mergeDataResult)
+      subKeys.forEach(subKey => {
+        // 如果subKey存在@，则需要把层级上移如:
+        // result: { '@kitty': { age: 7 } } => result: { age: 7 }
+        if (-1 < subKey.indexOf('@')) {
+          mergeDataResult = Object.assign({}, mergeDataResult, mergeDataResult[subKey])
+          delete mergeDataResult[subKey]
+        }
+      })
+      rst[key] = mergeDataResult
     } else {
-      rst = Object.assign({}, rst, data[p])
+      // data[p]如果是对象类型，则用Object.assign赋值，否则直接赋值
+      rst = type(data[p]) === 'Object' ? Object.assign({}, rst, data[p]) : data[p]
     }
   }
   return rst
@@ -110,6 +128,10 @@ function validateBracketBothSide(str) {
   let leftHas = str.slice(0, 1) === '['
   let rightHas = str.slice(-1) === ']'
   return leftHas && rightHas
+}
+
+function type(obj) {
+  return Object.prototype.toString.call(obj).slice(8, -1)
 }
 
 module.exports = processMock
