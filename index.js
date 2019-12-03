@@ -19,11 +19,11 @@ app.use(koaBody({
 }))
 
 class KoaMockSwitch {
-  constructor(mockRoot, mockSwitchMap, apiSuffix) {
-    this.mockRoot = mockRoot
-    this.mockSwitchMap = mockSwitchMap
-    this.apiSuffix = apiSuffix || '.json'
-    this.$config = {} // 设置一个cache，让/mock-switch设置过的数据能够直接给页面
+  constructor(config) {
+    this.mockRoot = config.root
+    this.mockSwitchMap = config.switchMap
+    this.apiSuffix = config.apiSuffix || '.json'
+    this.$cache = {} // 设置一个cache，让/mock-switch设置过的数据能够直接给页面
   }
 
   start(port = 7777) {
@@ -46,9 +46,9 @@ class KoaMockSwitch {
         const value = ctx.request.body.value
         const mockHandle = require(`${this.mockRoot}${path}.js`)
         // ====
-        this.$config[path] = processMock(mockHandle(), value)
+        this.$cache[path] = processMock(mockHandle(), value)
         // ====
-        ctx.body = this.$config[path]
+        ctx.body = this.$cache[path]
       }
       await next()
     })
@@ -65,17 +65,17 @@ class KoaMockSwitch {
         // 调用对应的模拟数据
         let mockHandle = require(`${this.mockRoot}${path}.js`)
         // 返回数据
-        // 如果mock-switch设置过，则从cache中（即$config）获取即可
-        if (this.$config.hasOwnProperty(path)) {
-          ctx.body = this.$config[path]
+        // 如果mock-switch设置过，则从cache中（即$cache）获取即可
+        if (this.$cache.hasOwnProperty(path)) {
+          ctx.body = this.$cache[path]
         } else {
           // 因为mock-switch对应的mock数据的数据结构的特殊性，需要设置一个默认值
           // 因此遍历mockSwitchMap，如果当前path在mockSwitchMap中
           // 则直接用第一项为默认值
           const switchData = this.mockSwitchMap.find(item => item.url === path)
           if (switchData) {
-            this.$config[path] = processMock(mockHandle(), switchData.selections[0].value)
-            ctx.body = this.$config[path]
+            this.$cache[path] = processMock(mockHandle(), switchData.selections[0].value)
+            ctx.body = this.$cache[path]
           } else {
             // 不用mock-switch，正常返回
             ctx.body = mockHandle()
