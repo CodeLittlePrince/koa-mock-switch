@@ -2,7 +2,7 @@ const path = require('path')
 // mock文件的根目录
 const mockRoot = path.join(__dirname, './mock')
 // require koa-mock-switch
-const KoaMockSwitch = require('../../index.js')
+const KoaMockSwitch = require('../../lib/index.js')
 // mock管理列表
 const mockSwitchMap = require('./mockSwitchMap.js')
 /**

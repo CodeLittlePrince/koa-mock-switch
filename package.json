@@ -2,10 +2,10 @@
   "name": "koa-mock-switch",
   "version": "1.0.7",
   "description": "easy way to swich mock status without changing source mock data",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "mock": "nodemon -q ./demo/end/server.js",
-    "demo": "webpack-dev-server --open"
+    "demo": "webpack-dev-server --open --config webpack.demo.config"
   },
   "repository": {
     "type": "git",
