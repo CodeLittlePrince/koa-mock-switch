@@ -4,7 +4,7 @@
   "description": "easy way to swich mock status without changing source mock data",
   "main": "lib/index.js",
   "scripts": {
-    "mock": "nodemon -q ./demo/end/server.js",
+    "mock": "nodemon -q ./demo/mockServer/server.js",
     "demo": "webpack-dev-server --open --config webpack.demo.config"
   },
   "repository": {

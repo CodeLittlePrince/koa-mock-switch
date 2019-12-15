@@ -140,14 +140,22 @@ const KoaMockSwitch = require('koa-mock-switch')
 // mock管理列表
 const mockSwitchMap = require('./mockSwitchMap.js')
 /**
- * KoaMockSwitch(mockRoot, mockSwitchMap, apiSuffix)
+ * config
  * @param mockRoot mock文件的根目录
+ * @param port mock服务的端口
  * @param mockSwitchMap mock管理列表
+ * @param apiPrefix 客户端请求api的前缀，比如'/api/kitty.json'，apiPrefix就是'/api'
  * @param apiSuffix 客户端请求api的后缀，比如'/api/kitty.json'，apiSuffix就是'.json'
  */
-const mock = new KoaMockSwitch(mockRoot, mockSwitchMap, '.htm')
+const mock = new KoaMockSwitch({
+  root: mockRoot,
+  port: 7878,
+  switchMap: mockSwitchMap,
+  apiPrefix: '/api',
+  apiSuffix: '.htm'
+})
 // 启动mock服务
-mock.start(7878)
+mock.start()
 ```
 
 还是对使用方法疑惑的同学，可以参考demo。
