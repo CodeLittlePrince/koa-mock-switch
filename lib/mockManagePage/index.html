@@ -17,7 +17,9 @@
 			<el-col :span="20" :offset="2">
 				<h1>接口管理</h1>
 				<el-table :data="tableData" style="width: 100%" border>
-						<el-table-column prop="url" label="接口名称" sortable width="300">
+						<el-table-column prop="url" label="接口名称" sortable width="270">
+						</el-table-column>
+						<el-table-column prop="desc" label="接口描述" sortable width="270">
 						</el-table-column>
 						<el-table-column label="当前选项"
 							filter-placement="bottom-end">
