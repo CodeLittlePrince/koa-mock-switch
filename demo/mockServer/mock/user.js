@@ -4,15 +4,34 @@ module.exports = () => {
   return {
     message: 'error message',
     result: {
-      name: 'Code Little Prince',
-      age: 18,
-      level: {
-        '@normal': '普通用户',
-        '@vip': '会员',
-        '@bigVip': '大会员',
-        '@superVip': '超级会员',
-        '@vvip': '土豪会员'
-      }
+      '@Jack': {
+        name: 'Jack',
+        age: 20,
+        level: '普通用户'
+      },
+      '@Pony': {
+        name: 'Pony',
+        age: 22,
+        level: '会员'
+      },
+      '@Jimmy': {
+        name: 'Jimmy',
+        age: 30,
+        level: '大会员'
+      },
+      '@Susan': {
+        name: 'Susan',
+        age: 26,
+        level: '超级会员'
+      },
+      '@Joy': {
+        name: 'Joy',
+        age: 18,
+        level: {
+          '@rich': '土豪会员',
+          '@poor': '普通用户'
+        }
+      },
     }
   }
 }

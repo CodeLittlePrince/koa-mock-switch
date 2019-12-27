@@ -26,33 +26,39 @@ module.exports = [
     desc: '获取用户信息',
     selections: [
       {
-        name: '普通用户',
+        name: '普通用户-Jack',
         value: `[
-          result [ level [ @normal ] ]
+          result [ @Jack ]
         ]`
       },
       {
-        name: '会员',
+        name: '会员-Pony',
         value: `[
-          result [ level [ @vip ] ]
+          result [ @Pony ]
         ]`
       },
       {
-        name: '大会员',
+        name: '大会员-Jimmy',
         value: `[
-          result [ level [ @bigVip ] ]
+          result [ @Jimmy ]
         ]`
       },
       {
-        name: '超级会员',
+        name: '超级会员-Susan',
         value: `[
-          result [ level [ @superVip ] ]
+          result [ @Susan ]
         ]`
       },
       {
-        name: '土豪会员',
+        name: '土豪会员-Joy(rich)',
         value: `[
-          result [ level [ @vvip ] ]
+          result [ @Joy [ level [ @rich ] ] ]
+        ]`
+      },
+      {
+        name: '普通用户-Joy(poor)',
+        value: `[
+          result [ @Joy [ level [ @poor ] ] ]
         ]`
       },
     ]
