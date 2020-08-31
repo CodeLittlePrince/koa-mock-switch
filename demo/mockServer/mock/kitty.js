@@ -8,7 +8,7 @@ const data = Mock.mock({
 const img = Mock.Random.image('200x100')
 
 // 返回的结果处理
-module.exports = () => {
+module.exports = (params) => {
   // 返回最终结果（配合mockSwitch）
   return {
     message: 'error message',

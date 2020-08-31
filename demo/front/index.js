@@ -1,5 +1,5 @@
 $('sendKittyBtn').addEventListener('click', () => {
-  fetch('/api/kitty.htm')
+  fetch('/api/kitty.htm?hello=123')
     .then(res => {
       return res.json()
     })
@@ -11,12 +11,9 @@ $('sendKittyBtn').addEventListener('click', () => {
 })
 
 $('sendTomBtn').addEventListener('click', () => {
-  fetch('/api/tom.htm')
-    .then(res => {
-      return res.json()
-    })
+  axios.post('/api/tom.htm', {hello: 123, kitty: 7})
     .then(data => {
-      const result = data.result
+      const result = data.data.result
       const msg = result.msg
       $('response').textContent = msg
     })

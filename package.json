@@ -4,7 +4,7 @@
   "description": "easy way to swich mock status without changing source mock data",
   "main": "lib/index.js",
   "scripts": {
-    "mock": "nodemon -q ./demo/mockServer/server.js",
+    "mock": "nodemon -q --inspect ./demo/mockServer/server.js",
     "demo": "webpack-dev-server --open --config webpack.demo.config"
   },
   "repository": {
@@ -33,6 +33,7 @@
     "chalk": "^2.4.1",
     "koa": "^2.6.2",
     "koa-body": "^4.1.1",
+    "koa-bodyparser": "^4.3.0",
     "koa-router": "^7.4.0",
     "koa-send": "^5.0.0"
   }
