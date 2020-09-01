@@ -1,6 +1,5 @@
 module.exports = {
   share: [
-    // 主页-hello 用到了运行时控制success和error
     {
       name: 'shareData1',
       desc: '共享数据1',
