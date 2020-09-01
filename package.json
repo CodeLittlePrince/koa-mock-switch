@@ -6,7 +6,8 @@
   "scripts": {
     "mock": "nodemon -q --inspect ./demo/mockServer/server.js",
     "demo": "webpack-dev-server --open --config webpack.demo.config",
-    "lint": "eslint --ext .js ./"
+    "lint": "eslint --ext .js ./",
+    "release": "np --yolo"
   },
   "husky": {
     "hooks": {
@@ -32,7 +33,8 @@
     "husky": "^4.2.5",
     "mockjs": "^1.0.1-beta3",
     "nodemon": "^2.0.4",
-    "webpack": "^4.41.2",
+    "np": "^6.5.0",
+    "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   },
