@@ -12,7 +12,7 @@ $('sendKittyBtn').addEventListener('click', () => {
 })
 
 $('sendTomBtn').addEventListener('click', () => {
-  axios.post('/api/tom.htm', {hello: 123, kitty: 7})
+  window.axios.post('/api/tom.htm', {hello: 123, kitty: 7})
     .then(data => {
       const result = data.data.result
       const msg = result.msg
