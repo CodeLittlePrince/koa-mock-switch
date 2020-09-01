@@ -41,5 +41,5 @@ function $(node) {
 
 function fillSharedData(data) {
   $('money').textContent = data.money
-  $('house').textContent = data.house
+  $('sheep').textContent = data.sheep
 }

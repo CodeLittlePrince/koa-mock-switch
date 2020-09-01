@@ -5,21 +5,21 @@ module.exports = {
       desc: '共享数据1',
       selections: [
         {
-          name: '无房',
+          name: '无羊',
           value: `[
-            house [ @none ]
+            sheep [ @none ]
           ]`
         },
         {
-          name: '一套房',
+          name: '一只羊',
           value: `[
-            house [ @one ]
+            sheep [ @one ]
           ]`
         },
         {
-          name: '很多房',
+          name: '很多羊',
           value: `[
-            house [ @lots ]
+            sheep [ @lots ]
           ]`
         },
       ]
