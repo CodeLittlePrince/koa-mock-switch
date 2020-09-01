@@ -9,12 +9,12 @@ module.exports = (params, shareData) => {
 
   return {
     message: 'error message',
+    params,
     result: {
       msg,
       data: {
         name: 'tom',
         age: 7,
-        params: params,
         shareData,
       },
       status: '200'

@@ -8,11 +8,12 @@ const data = Mock.mock({
 const img = Mock.Random.image('200x100')
 
 // 返回的结果处理
-module.exports = (_, shareData) => {
+module.exports = (params, shareData) => {
   // 返回最终结果（配合mockSwitch）
   return {
     message: 'error message',
     shareData,
+    params,
     result: {
       '@success': {
         msg: 'Hello Kitty',
