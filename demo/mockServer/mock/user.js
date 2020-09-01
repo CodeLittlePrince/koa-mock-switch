@@ -1,9 +1,10 @@
 // 返回的结果处理
-module.exports = () => {
+module.exports = (_, shareData) => {
   // 返回最终结果（配合mockSwitch）
   return {
     message: 'error message',
     result: {
+      shareData,
       '@Jack': {
         name: 'Jack',
         age: 20,

@@ -15,21 +15,37 @@
   <div id="app">
 		<el-row>
 			<el-col :span="20" :offset="2">
-				<h1>接口管理</h1>
-				<el-table :data="tableData" style="width: 100%" border>
-						<el-table-column prop="url" label="接口名称" sortable width="270">
-						</el-table-column>
-						<el-table-column prop="desc" label="接口描述" sortable width="270">
-						</el-table-column>
-						<el-table-column label="当前选项"
-							filter-placement="bottom-end">
-							<template slot-scope="scope">
-								<el-radio-group v-model="scope.row.status" @change="changeHandle(scope.row)">
-									<el-radio v-for="item in scope.row.selections" :label="item.value">{{ item.name }}</el-radio>
-								</el-radio-group>
-							</template>
-						</el-table-column>
-					</el-table>
+				<h2>共享数据管理</h2>
+				<el-table :data="shareTableData" style="width: 100%" border>
+					<el-table-column prop="name" label="数据名称" sortable width="270">
+					</el-table-column>
+					<el-table-column prop="desc" label="接口描述" sortable width="270">
+					</el-table-column>
+					<el-table-column label="当前选项"
+						filter-placement="bottom-end">
+						<template slot-scope="scope">
+							<el-radio-group v-model="scope.row.status" @change="changeHandle(scope.row, 'share')">
+								<el-radio v-for="item in scope.row.selections" :label="item.value">{{ item.name }}</el-radio>
+							</el-radio-group>
+						</template>
+					</el-table-column>
+				</el-table>
+				
+				<h2>接口管理</h2>
+				<el-table :data="apiTableData" style="width: 100%" border>
+					<el-table-column prop="url" label="接口名称" sortable width="270">
+					</el-table-column>
+					<el-table-column prop="desc" label="接口描述" sortable width="270">
+					</el-table-column>
+					<el-table-column label="当前选项"
+						filter-placement="bottom-end">
+						<template slot-scope="scope">
+							<el-radio-group v-model="scope.row.status" @change="changeHandle(scope.row, 'api')">
+								<el-radio v-for="item in scope.row.selections" :label="item.value">{{ item.name }}</el-radio>
+							</el-radio-group>
+						</template>
+					</el-table-column>
+				</el-table>
 			</el-col>
 		</el-row>
 	</div>
