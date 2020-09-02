@@ -35,13 +35,23 @@ $('getUserInfo').addEventListener('click', () => {
     })
 })
 
-$('resetUserInfo').addEventListener('click', () => {
-  fetch('/api/resetShareData.htm')
+$('changeShareDataBtn').addEventListener('click', () => {
+  fetch('/api/changeShareData.htm')
     .then(res => {
       return res.json()
     })
     .then(() => {
-      $('resetShareData').textContent = 'success'
+      $('changeShareData').textContent = 'success'
+    })
+})
+
+$('changeUserInfoBtn').addEventListener('click', () => {
+  fetch('/api/changOtherApi.htm')
+    .then(res => {
+      return res.json()
+    })
+    .then(() => {
+      $('changeUserInfo').textContent = 'success'
     })
 })
 
