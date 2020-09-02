@@ -1,7 +1,7 @@
 // 不需要mockSwitch的mock数据
-module.exports = (params, shareData) => {
+module.exports = ({ params, share }) => {
   let msg = ''
-  if (shareData.shareData1.sheep === 0) {
+  if (share.data.shareData1.sheep === 0) {
     msg = 'Tom! Are you crazy?'
   } else {
     msg = 'Hi Tom! You are so handsome!'
@@ -15,7 +15,7 @@ module.exports = (params, shareData) => {
       data: {
         name: 'tom',
         age: 7,
-        shareData,
+        shareData: share.data,
       },
       status: '200'
     }

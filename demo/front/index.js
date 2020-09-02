@@ -35,6 +35,16 @@ $('getUserInfo').addEventListener('click', () => {
     })
 })
 
+$('resetUserInfo').addEventListener('click', () => {
+  fetch('/api/resetShareData.htm')
+    .then(res => {
+      return res.json()
+    })
+    .then(() => {
+      $('resetShareData').textContent = 'success'
+    })
+})
+
 function $(node) {
   return document.getElementById(node)
 }
