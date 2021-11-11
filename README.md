@@ -1,3 +1,7 @@
+迁移
+---
+本项目已迁移至[mock-master](https://github.com/CodeLittlePrince/mock-master)
+
 What
 ---
 这是一个前端mock数据、并可以管理返回数据的server。
